@@ -5,7 +5,7 @@ import AccordionGallery from './AccordionGallery'
 import Stack from './Stack'
 import MorphSlider from './MorphSlider'
 import CircularGallery from './CircularGallery'
-import Carousel from './Carousel'
+import LogoLoop from './LogoLoop'
 import GridMotion from './GridMotion'
 import StarBorder from './StarBorder'
 import PixelTransition from './PixelTransition'
@@ -592,14 +592,17 @@ function App() {
           </Reveal>
 
           <Reveal className="design-carousel-wrap" delay={80}>
-            <Carousel
-              items={designCarouselItems}
-              baseWidth={300}
-                  autoplay={false}
-              autoplayDelay={3000}
-              pauseOnHover={true}
-              loop={true}
-              round={false}
+            <LogoLoop
+              logos={designCarouselItems}
+              speed={54}
+              direction="left"
+              logoHeight={460}
+              gap={16}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#171815"
+              ariaLabel="精选设计分类循环展示"
               selectedId={activeDesignCategory}
               onItemClick={(item) => setActiveDesignCategory((current) => current === item.id ? null : item.id)}
             />
