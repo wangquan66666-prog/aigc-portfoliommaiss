@@ -416,8 +416,8 @@ function App() {
     <main className="overflow-x-hidden bg-ink text-paper">
       <div className="site-pixel-trail">
         <PixelTrail
-          gridSize={50}
-          trailSize={0.08}
+          gridSize={18}
+          trailSize={0.018}
           maxAge={200}
           interpolate={4.6}
           color="#a6f231"
