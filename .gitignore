@@ -1,0 +1,15 @@
+node_modules
+dist
+*.tsbuildinfo
+.pnpm-store
+_fontcache
+_resume_pages
+_resume_review
+.workbuddy
+qa-*.png
+render_*.js
+convert_pojie.py
+*.log
+/assets
+/scripts
+/*.png
