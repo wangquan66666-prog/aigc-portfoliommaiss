@@ -506,7 +506,7 @@ function App() {
                 <div className="resume-profile-copy">
                   <div className="resume-identity">
                     <h2 ref={resumeProfileHeadingRef} tabIndex={-1}>王硕</h2>
-                    <p className="resume-role">AIGC 视频生成 / AI 视觉内容</p>
+                    <p className="resume-role">AIGC 创意师 / AI 视觉内容</p>
                   </div>
 
                   <p className="resume-summary">环境设计专业背景，擅长把设计思维、画面构成与生成式工具结合，完成从创意策划到后期成片的完整内容生产。</p>
