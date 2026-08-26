@@ -9,6 +9,7 @@ import LogoLoop from './LogoLoop'
 import GridMotion from './GridMotion'
 import StarBorder from './StarBorder'
 import PixelTransition from './PixelTransition'
+import PixelTrail from './PixelTrail'
 
 const heroVideo = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_044635_8daabe05-1a5c-491c-920f-4b0bd8f04812.mp4'
 
@@ -413,6 +414,16 @@ function App() {
 
   return (
     <main className="overflow-x-hidden bg-ink text-paper">
+      <div className="site-pixel-trail">
+        <PixelTrail
+          gridSize={50}
+          trailSize={0.08}
+          maxAge={200}
+          interpolate={4.6}
+          color="#a6f231"
+          gooeyFilter={{ id: 'custom-goo-filter', strength: 2 }}
+        />
+      </div>
       <div className="site-grid-motion">
         <GridMotion items={gridMotionItems} />
       </div>
