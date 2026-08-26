@@ -513,7 +513,7 @@ function App() {
 
                   <div className="resume-target">
                     <span>目标方向</span>
-                    <p>AIGC 视频生成师、AI 美学专员及相关岗位</p>
+                    <p>AIGC 创意师、AI 美学专员及相关岗位</p>
                   </div>
 
                   <div className="resume-tools">
@@ -588,7 +588,7 @@ function App() {
 
               <div className="resume-history-footer">
                 <span>求职方向</span>
-                <p>AIGC 视频生成师 / AI 美学专员</p>
+                <p>AIGC 创意师 / AI 美学专员</p>
               </div>
             </div>
           </Reveal>
