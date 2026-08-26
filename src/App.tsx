@@ -572,7 +572,7 @@ function App() {
                   <time>2025.07 - 2026.08</time>
                   <div>
                     <h4>北京国王互娱文化有限公司</h4>
-                    <p className="resume-job-role">AI 视频生成</p>
+                    <p className="resume-job-role">AIGC 创意师</p>
                     <p>参与 AI 短剧、视频与小说内容生产，负责脚本创作、Prompt 优化、风格调校和系列化内容制作。</p>
                   </div>
                 </article>
