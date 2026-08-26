@@ -379,6 +379,7 @@ function App() {
   const [resumeView, setResumeView] = useState<'profile' | 'history'>('profile')
   const resumeProfileHeadingRef = useRef<HTMLHeadingElement>(null)
   const resumeHistoryHeadingRef = useRef<HTMLHeadingElement>(null)
+  const designShowcaseRef = useRef<HTMLDivElement>(null)
   const resumeViewMounted = useRef(false)
 
   useEffect(() => {
@@ -393,6 +394,19 @@ function App() {
     })
     return () => window.cancelAnimationFrame(frame)
   }, [resumeView])
+
+  useEffect(() => {
+    if (!activeDesignCategory) return
+
+    const frame = window.requestAnimationFrame(() => {
+      designShowcaseRef.current?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start',
+      })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [activeDesignCategory])
 
   const closeMenu = () => setMenuOpen(false)
   const activeDesign = designCarouselItems.find((item) => item.id === activeDesignCategory)
@@ -592,72 +606,74 @@ function App() {
           </Reveal>
 
           {activeDesign && (
-            <Reveal className="design-showcase-panel" key={activeDesign.id}>
-              <div className="design-showcase-heading">
-                <div>
-                  <span>{String(designCarouselItems.findIndex((item) => item.id === activeDesign.id) + 1).padStart(2, '0')} / 07</span>
-                  <h3>{activeDesign.title}</h3>
-                  <p>{activeDesign.subtitle}</p>
-                </div>
-                <button type="button" onClick={() => setActiveDesignCategory(null)} aria-label="收起设计系列">
-                  收起 <X size={18} strokeWidth={1.5} />
-                </button>
-              </div>
-
-              <div className={`design-showcase-body is-${activeDesign.id}`}>
-                {activeDesign.id === 'poster' && (
-                  <AccordionGallery items={posterWorks} defaultIndex={2} expandRatio={0.52} trigger="hover" />
-                )}
-                {activeDesign.id === 'typography' && (
-                  <div className="design-showcase-stack">
-                    <Stack
-                      randomRotation={true}
-                      sensitivity={180}
-                      sendToBackOnClick={true}
-                      cards={typographyWorks.map((src, cardIndex) => (
-                        <img key={src} src={src} alt={`字体设计作品 ${cardIndex + 1}`} draggable="false" loading="lazy" />
-                      ))}
-                    />
+            <div ref={designShowcaseRef} className="design-showcase-anchor">
+              <Reveal className="design-showcase-panel" key={activeDesign.id}>
+                <div className="design-showcase-heading">
+                  <div>
+                    <span>{String(designCarouselItems.findIndex((item) => item.id === activeDesign.id) + 1).padStart(2, '0')} / 07</span>
+                    <h3>{activeDesign.title}</h3>
+                    <p>{activeDesign.subtitle}</p>
                   </div>
-                )}
-                {activeDesign.id === 'concept' && (
-                  <AccordionGallery
-                    items={illustrationWorks}
-                    defaultIndex={2}
-                    expandRatio={0.52}
-                    trigger="hover"
-                    ariaLabel="插画设计作品切换"
-                    imageAltSuffix="插画作品"
-                  />
-                )}
-                {activeDesign.id === 'banner' && (
-                  <AccordionGallery
-                    items={bannerWorks}
-                    defaultIndex={2}
-                    expandRatio={0.52}
-                    trigger="hover"
-                    ariaLabel="Banner 设计作品切换"
-                    imageAltSuffix="Banner 设计"
-                  />
-                )}
-                {activeDesign.id === 'splash' && (
-                  <AccordionGallery
-                    items={splashWorks}
-                    defaultIndex={2}
-                    expandRatio={0.52}
-                    trigger="hover"
-                    ariaLabel="启动页设计作品切换"
-                    imageAltSuffix="启动页设计"
-                  />
-                )}
-                {activeDesign.id === 'ip' && (
-                  <MorphSlider items={ipWorks} transition="melt" intensity={0.55} aberration={0.35} drift={0.4} autoplay />
-                )}
-                {activeDesign.id === 'vi' && (
-                  <MorphSlider items={viWorks} transition="melt" intensity={0.55} aberration={0.35} drift={0.4} autoplay />
-                )}
-              </div>
-            </Reveal>
+                  <button type="button" onClick={() => setActiveDesignCategory(null)} aria-label="收起设计系列">
+                    收起 <X size={18} strokeWidth={1.5} />
+                  </button>
+                </div>
+
+                <div className={`design-showcase-body is-${activeDesign.id}`}>
+                  {activeDesign.id === 'poster' && (
+                    <AccordionGallery items={posterWorks} defaultIndex={2} expandRatio={0.52} trigger="hover" />
+                  )}
+                  {activeDesign.id === 'typography' && (
+                    <div className="design-showcase-stack">
+                      <Stack
+                        randomRotation={true}
+                        sensitivity={180}
+                        sendToBackOnClick={true}
+                        cards={typographyWorks.map((src, cardIndex) => (
+                          <img key={src} src={src} alt={`字体设计作品 ${cardIndex + 1}`} draggable="false" loading="lazy" />
+                        ))}
+                      />
+                    </div>
+                  )}
+                  {activeDesign.id === 'concept' && (
+                    <AccordionGallery
+                      items={illustrationWorks}
+                      defaultIndex={2}
+                      expandRatio={0.52}
+                      trigger="hover"
+                      ariaLabel="插画设计作品切换"
+                      imageAltSuffix="插画作品"
+                    />
+                  )}
+                  {activeDesign.id === 'banner' && (
+                    <AccordionGallery
+                      items={bannerWorks}
+                      defaultIndex={2}
+                      expandRatio={0.52}
+                      trigger="hover"
+                      ariaLabel="Banner 设计作品切换"
+                      imageAltSuffix="Banner 设计"
+                    />
+                  )}
+                  {activeDesign.id === 'splash' && (
+                    <AccordionGallery
+                      items={splashWorks}
+                      defaultIndex={2}
+                      expandRatio={0.52}
+                      trigger="hover"
+                      ariaLabel="启动页设计作品切换"
+                      imageAltSuffix="启动页设计"
+                    />
+                  )}
+                  {activeDesign.id === 'ip' && (
+                    <MorphSlider items={ipWorks} transition="melt" intensity={0.55} aberration={0.35} drift={0.4} autoplay />
+                  )}
+                  {activeDesign.id === 'vi' && (
+                    <MorphSlider items={viWorks} transition="melt" intensity={0.55} aberration={0.35} drift={0.4} autoplay />
+                  )}
+                </div>
+              </Reveal>
+            </div>
           )}
 
           <div className="legacy-design-layout" aria-hidden="true">

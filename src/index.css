@@ -305,6 +305,7 @@ header nav a:hover, header > a:last-child:hover { color: #d8ff4f; }
 .design-carousel-meta small { color: rgba(236,236,231,.42); font-size: .66rem; letter-spacing: .04em; }
 .design-carousel-open { display: flex; align-items: center; justify-content: flex-end; gap: .35rem; padding: .2rem .25rem .15rem; color: rgba(236,236,231,.48); font-size: .65rem; }
 .design-carousel-card.is-selected .design-carousel-open { color: #d8ff4f; }
+.design-showcase-anchor { scroll-margin-top: clamp(1rem, 3vw, 2rem); }
 .design-showcase-panel { margin-top: 1.5rem; overflow: hidden; border: 1px solid rgba(236,236,231,.16); border-radius: 24px; background: rgba(12,13,11,.9); box-shadow: 0 32px 90px rgba(0,0,0,.28); }
 .design-showcase-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 1.5rem 1.75rem; border-bottom: 1px solid rgba(236,236,231,.13); }
 .design-showcase-heading > div { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: .25rem 1rem; align-items: baseline; }
