@@ -288,12 +288,15 @@ header nav a:hover, header > a:last-child:hover { color: #d8ff4f; }
 .legacy-design-layout { display: none; }
 .design-carousel-wrap { margin-top: 2.5rem; }
 .logo-loop { position: relative; min-width: 0; isolation: isolate; }
-.logo-loop-viewport { overflow: hidden; padding: 1rem 0 2rem; }
-.logo-loop-track { display: flex; width: max-content; gap: var(--logo-loop-gap); animation: logo-loop-left var(--logo-loop-duration) linear infinite; will-change: transform; }
+.logo-loop-viewport { overflow: hidden; padding: 1rem 0 2rem; cursor: grab; touch-action: pan-y; user-select: none; }
+.logo-loop-track { display: flex; width: max-content; gap: var(--logo-loop-gap); animation: logo-loop-left var(--logo-loop-duration) linear var(--logo-loop-delay, 0s) infinite; will-change: transform; }
 .logo-loop.is-right .logo-loop-track { animation-name: logo-loop-right; }
 .logo-loop-group { display: flex; flex: none; gap: var(--logo-loop-gap); }
-.logo-loop .design-carousel-card { flex-basis: min(var(--logo-loop-card-width), calc(100vw - 3rem)); width: min(var(--logo-loop-card-width), calc(100vw - 3rem)); height: var(--logo-loop-card-height); }
+.logo-loop .design-carousel-card { flex-basis: min(var(--logo-loop-card-width), calc(100vw - 3rem)); width: min(var(--logo-loop-card-width), calc(100vw - 3rem)); height: var(--logo-loop-card-height); cursor: grab; }
 .logo-loop.pauses-on-hover:hover .logo-loop-track, .logo-loop.pauses-on-hover:focus-within .logo-loop-track, .logo-loop.is-interacting .logo-loop-track { animation-play-state: paused; }
+.logo-loop.is-dragging .logo-loop-track { animation: none; }
+.logo-loop.is-dragging, .logo-loop.is-dragging .logo-loop-viewport, .logo-loop.is-dragging .design-carousel-card { cursor: grabbing; }
+.logo-loop.is-dragging.scale-on-hover .design-carousel-card:hover { transform: none; }
 .logo-loop.scale-on-hover .design-carousel-card:hover, .logo-loop.scale-on-hover .design-carousel-card:focus-visible { transform: translateY(-7px) scale(1.018); }
 .logo-loop.has-fade::before, .logo-loop.has-fade::after { content: ''; position: absolute; top: 0; bottom: 0; z-index: 8; width: clamp(1.4rem, 5vw, 5rem); pointer-events: none; }
 .logo-loop.has-fade::before { left: 0; background: linear-gradient(90deg, var(--logo-loop-fade-color), transparent); }
